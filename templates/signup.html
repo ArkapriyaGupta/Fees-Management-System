@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #000000; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #000000,
+          #2d3436
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #000000,
+          #2d3436
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .signup-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .signup-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .signup-form {
+        margin-bottom: 20px;
+      }
+
+      .signup-form input[type="text"],
+      .signup-form input[type="password"],
+      .signup-form input[type="tel"],
+      .signup-form input[type="radio"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      .signup-form input[type="radio"] {
+        width: auto;
+        margin-right: 5px;
+      }
+
+      .signup-form label {
+        font-weight: bold;
+      }
+
+      .signup-form button {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .signup-form button:hover {
+        background-color: #45a049;
+      }
+
+      .signup-form button:hover {
+        background-color: navy;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2>Signup Form</h2>
+      <form class="signup-form" action="#" method="POST">
+        <label for="student-id">Student ID:</label>
+        <input
+          type="text"
+          id="student-id"
+          name="student-id"
+          pattern="[A-Za-z0-9]{10}"
+          required
+        />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+        <br>
+        <label>I am a:</label>
+        <input type="radio" id="student" name="role" value="student" required />
+        <label for="student">Student</label>
+        <input type="radio" id="teacher" name="role" value="teacher" required />
+        <label for="teacher">Teacher</label>
+
+        <br><br>
+        <label for="teacher-id">Teacher ID:</label>
+        <input
+          type="text"
+          id="teacher-id"
+          name="teacher-id"
+          pattern="[A-Za-z0-9]{5}"
+          required
+        />
+
+        <label for="mobile">Mobile Number:</label>
+        <input
+          type="tel"
+          id="mobile"
+          name="mobile"
+          pattern="[0-9]{10}"
+          required
+        />
+
+        <label for="batch-id">Batch ID:</label>
+        <input
+          type="text"
+          id="batch-id"
+          name="batch-id"
+          pattern="[A-Za-z0-9]{5}"
+          required
+        />
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </body>
+</html>
