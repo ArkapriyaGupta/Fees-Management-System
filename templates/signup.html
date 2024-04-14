@@ -91,54 +91,54 @@
   <body>
     <div class="signup-container">
       <h2>Signup Form</h2>
-      <form class="signup-form" action="#" method="POST">
-        <label for="student-id">Student ID:</label>
+      <form class="signup-form" action="/signupStudent" method="POST">
+       <!--  <label for="student-id">Student ID:</label>
         <input
           type="text"
-          id="student-id"
-          name="student-id"
+          id="studentId"
+          name="studentName"
           pattern="[A-Za-z0-9]{10}"
           required
-        />
-
+        /> -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="nameName" required>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password" id="password" name="passwordName" required />
         <br>
-        <label>I am a:</label>
-        <input type="radio" id="student" name="role" value="student" required />
+        <!-- <label>I am a:</label>
+        <input type="radio" id="student" name="roleName" value="student" required />
         <label for="student">Student</label>
-        <input type="radio" id="teacher" name="role" value="teacher" required />
-        <label for="teacher">Teacher</label>
-
+        <input type="radio" id="teacher" name="roleName" value="teacher" required />
+        <label for="teacher">Teacher</label> -->
         <br><br>
-        <label for="teacher-id">Teacher ID:</label>
+        <!-- <label for="teacher-id">Teacher ID:</label>
         <input
           type="text"
           id="teacher-id"
           name="teacher-id"
           pattern="[A-Za-z0-9]{5}"
           required
-        />
+        /> -->
 
         <label for="mobile">Mobile Number:</label>
         <input
           type="tel"
           id="mobile"
-          name="mobile"
+          name="mobileName"
           pattern="[0-9]{10}"
           required
         />
 
-        <label for="batch-id">Batch ID:</label>
+        <!-- <label for="batch-id">Batch ID:</label>
         <input
           type="text"
           id="batch-id"
           name="batch-id"
           pattern="[A-Za-z0-9]{5}"
           required
-        />
+        /> -->
 
-        <button type="submit">Sign Up</button>
+        <input type="submit" value="Sign Up">
       </form>
     </div>
   </body>

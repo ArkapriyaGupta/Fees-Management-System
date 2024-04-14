@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .error-container {
+            margin-top: 100px;
+        }
+        .error-symbol {
+            font-size: 100px;
+            color: #dc3545; /* Red color for error symbol */
+        }
+        .error-message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #dc3545; /* Red color for error message */
+        }
+        .error-link {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-symbol">&#9888;</div> <!-- Warning symbol -->
+        <div class="error-message">{{ error_message }}</div>
+        <div class="error-link"><a href="http://127.0.0.1:5000/">Go back to Home</a></div>
+    </div>
+</body>
+</html>
