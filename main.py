@@ -3,6 +3,7 @@ from flask_login import login_user, login_required, logout_user, current_user, L
 from werkzeug.security import gen_salt, generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import random, string
+from utilities import genAlphaNum
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secrets'
@@ -17,7 +18,7 @@ errorList["inputError"] = "Could not fetch input. Please try again."
 errorList["emptyInput"] = "One of the input field is empty. Please try again"
 
 class Student(UserMixin,db.Model):
-    studentId = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
+    token = db.Column(db.String(1000), primary_key=True) # primary keys are required by SQLAlchemy
     name = db.Column(db.String(1000))
     password = db.Column(db.String(1000))
     mobile = db.Column(db.String(1000))    
@@ -65,7 +66,7 @@ def signupStudentPost():
     #     return render_template('error.html',error_message=errorList['duplicateUser'])
 
     if(studentName!=None and passWord!=None and mobileNumber != None):    
-        newStudent = Student(name=studentName,password=passWord,mobile=mobileNumber)
+        newStudent = Student(token=genAlphaNum(10),name=studentName,password=passWord,mobile=mobileNumber)
         db.session.add(newStudent)
         db.session.commit()
     else:
@@ -74,7 +75,7 @@ def signupStudentPost():
     return redirect(url_for('signupStudent'))
 
 
-
+# 
 
 if __name__ == "__main__":
     app.run(debug=True) 

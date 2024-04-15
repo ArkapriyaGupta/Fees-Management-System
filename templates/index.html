@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .option-container {
+        width: 200px;
+        text-align: center;
+        margin: 0 20px;
+    }
+
+    .option-img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .option-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .option-button {
+        border-radius: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .option-button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="option-container">
+    <div class="option-img">
+        <img src="bird1.jpg" alt="Bird 1">
+    </div>
+    <button class="option-button" onclick="changeColor(this)">Option 1</button>
+</div>
+
+<div class="option-container">
+    <div class="option-img">
+        <img src="bird2.jpg" alt="Bird 2">
+    </div>
+    <button class="option-button" onclick="changeColor(this)">Option 2</button>
+</div>
+
+<div class="option-container">
+    <div class="option-img">
+        <img src="bird3.jpg" alt="Bird 3">
+    </div>
+    <button class="option-button" onclick="changeColor(this)">Option 3</button>
+</div>
+
+<div class="option-container">
+    <div class="option-img">
+        <img src="bird4.jpg" alt="Bird 4">
+    </div>
+    <button class="option-button" onclick="changeColor(this)">Option 4</button>
+</div>
+
+<script>
+    function changeColor(button) {
+        button.style.backgroundColor = "#007bff"; /* Change to a different color on click */
+    }
+</script>
+
+</body>
+</html>
