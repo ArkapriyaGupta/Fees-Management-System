@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash,
 from flask_login import login_user, login_required, logout_user, current_user, LoginManager, UserMixin
 from werkzeug.security import gen_salt, generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
-import random, string
+import random, string,utilities
 from utilities import genAlphaNum
 
 app = Flask(__name__)
@@ -10,18 +10,21 @@ app.config['SECRET_KEY'] = 'secrets'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 db = SQLAlchemy()
 
-errorList = {}
-errorList["generalError"] = "Sorry! We ran into an error. Please try again."
-errorList["duplicateUser"] = "Sorry! the user already exist. Please login."
-errorList["saveError"] = "Some error occured in saving the data. Please try again."
-errorList["inputError"] = "Could not fetch input. Please try again."
-errorList["emptyInput"] = "One of the input field is empty. Please try again"
 
 class Student(UserMixin,db.Model):
-    token = db.Column(db.String(1000), primary_key=True) # primary keys are required by SQLAlchemy
+    token = db.Column(db.Integer(), primary_key=True) # primary keys are required by SQLAlchemy
     name = db.Column(db.String(1000))
     password = db.Column(db.String(1000))
-    mobile = db.Column(db.String(1000))    
+    mobile = db.Column(db.String(1000)) 
+    userName = db.Column(db.String(1000))
+
+class Teacher(UserMixin,db.Model):
+    token = db.Column(db.Integer(), primary_key=True) # primary keys are required by SQLAlchemy
+    name = db.Column(db.String(1000))
+    password = db.Column(db.String(1000))
+    mobile = db.Column(db.String(1000)) 
+    userName = db.Column(db.String(1000))
+
     # role = db.Column(db.String(1000))
 
 db.init_app(app)
@@ -42,36 +45,58 @@ def load_user(user_id):
 def indexPage():
     return render_template('index.html')
 
-@app.route('/signupStudent')
-def signupStudent():
+@app.route('/signup')
+def signup():
     return render_template('signup.html')
 
-@app.route('/signupStudent',methods=['POST'])
+@app.route('/signup',methods=['POST'])
 #request.form.get(<name of the tag>)
-def signupStudentPost():
+def signupPost():
+    #Taking input from browser
     try:
-        studentName = request.form.get('nameName')
+        Name = request.form.get('nameName')
         passWord =  generate_password_hash(request.form.get('passwordName'),method='pbkdf2:sha256')
         mobileNumber = request.form.get('mobileName')
-        # roleValue=Markup.escape(request.form.get('roleName'))
+        username = request.form.get("username")
+        roleValue=request.form.get('roleName')
     except: 
-        return render_template('error.html',error_message=errorList['inputError'])
+        return render_template('error.html',error_message=utilities.errorList['inputError'])
+ 
+    #Saving student input
     
-    # try:
-    #     student= Student.query.filter_by(name=studentName).first()
-    # except: 
-    #     return render_template('error.html',error_message=errorList['generalError'])
-        
-    # if student:
-    #     return render_template('error.html',error_message=errorList['duplicateUser'])
+    if roleValue == 'Student':  #Check for dupicacy
+        try:
+            student= Student.query.filter_by(userName=username).first()
+            if student:
+                return render_template('error.html', error_message=utilities.errorList['duplicateUser'])
+        except:
+            return render_template('error.html', error_message=utilities.errorList['generalError'])
 
-    if(studentName!=None and passWord!=None and mobileNumber != None):    
-        newStudent = Student(token=genAlphaNum(10),name=studentName,password=passWord,mobile=mobileNumber)
-        db.session.add(newStudent)
-        db.session.commit()
+        if(Name!=None and passWord!=None and mobileNumber != None):    
+            newStudent = Student(name=Name,password=passWord,mobile=mobileNumber,userName=username)
+            db.session.add(newStudent)
+            db.session.commit()
+        else:
+            return render_template('error.html',error_message=utilities.errorList['emptyInput'])
+        
+    #Saving teacher input 
+    elif roleValue == 'Teacher':    #Check for duplicacy 
+        try:
+            teacher= teacher.query.filter_by(userName=username).first()
+            if student:
+                return render_template('error.html', error_message=utilities.errorList['duplicateUser'])
+        except:
+            return render_template('error.html', error_message=utilities.errorList['generalError'])
+
+        if(Name!=None and passWord!=None and mobileNumber != None):    
+            newTeacher= Teacher(name=Name,password=passWord,mobile=mobileNumber,userName=username)
+            db.session.add(newTeacher)
+            db.session.commit()
+        else:
+            return render_template('error.html',error_message=utilities.errorList['emptyInput'])
     else:
-        return render_template('error.html',error_message=errorList['emptyInput'])
-    
+        return render_template('error.html',error_message=utilities.errorList['invalidRole'])
+
     return redirect(url_for('signupStudent'))
 
 
