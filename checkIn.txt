@@ -1,0 +1,7 @@
+This is file is for check in ideas or any decision made.
+
+1. Planning to remove student and teacher class(table) and make use of a single user table. 
+Reason: Might cause problem post login in the session.
+Status : Pending. 
+
+2.
