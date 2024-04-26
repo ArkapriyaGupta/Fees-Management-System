@@ -92,32 +92,19 @@
     <div class="signup-container">
       <h2>Signup Form</h2>
       <form class="signup-form" action="/signup" method="POST">
-       <!--  <label for="student-id">Student ID:</label>
-        <input
-          type="text"
-          id="studentId"
-          name="studentName"
-          pattern="[A-Za-z0-9]{10}"
-          required
-        /> -->
+
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Student name" name="nameName" required>
         <label for="password">Password:</label>
         <input type="password" id="password" placeholder="**********" name="passwordName" required />
         <br>
-        <!-- <label>I am a:</label>
-        <input type="radio" id="student" name="roleName" value="student" required />
-        <label for="student">Student</label>
-        <input type="radio" id="teacher" name="roleName" value="teacher" required />
-        <label for="teacher">Teacher</label> -->
-        <!-- <br> --> 
         <label for="teacher-id">Username:</label>
         <input type="text" placeholder = "Name + Mobile number"id="username" name="username"  required/>
 
         <label for="mobile">Mobile Number:</label>
         <input  type="tel" id="mobile" name="mobileName" pattern="[0-9]{10}" required placeholder="0123456789"/>
         <label for="options">Select your role:</label>
-        <select id="options" name="options">
+        <select id="options" name="roleName">
             <option value="Student">Student</option>
             <option value="Teacher">Teacher</option>
         </select>

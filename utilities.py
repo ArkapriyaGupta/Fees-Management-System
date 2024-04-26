@@ -16,3 +16,6 @@ errorList["saveError"] = "Some error occured in saving the data. Please try agai
 errorList["inputError"] = "Could not fetch input. Please try again."
 errorList["emptyInput"] = "One of the input field is empty. Please try again"
 errorList["invalidRole"] = "You have selected an invalid/no role. Please try again"
+errorList["saveError"] = "Some error occured in saving the data. Please try again."
+errorList["invalidUser"] = "The user does not exist. Please try again."
+errorList["invalidPassword"] = "The password is incorrect. Please try again."
